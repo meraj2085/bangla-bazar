@@ -1,4 +1,4 @@
-import { Link as a } from "react-router-dom";
+import { Link as a, Link } from "react-router-dom";
 
 import React from "react";
 
@@ -14,13 +14,13 @@ const Navbar = () => {
         <div className="flex-none">
           <ul className="menu menu-horizontal p-0">
             <li>
-              <a href="/" to="/">Home</a>
+              <Link to="/home">Home</Link>
             </li>
             <li>
-              <a href="/" to="/about">About</a>
+              <Link to="/about">About</Link>
             </li>
             <li>
-              <a href="/" to="/contact">Contact</a>
+              <Link to="/contact">Contact</Link>
             </li>
           </ul>
         </div>
