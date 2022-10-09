@@ -2,6 +2,7 @@ import React from "react";
 import "./Product.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { addToDb } from "../../utilities/fakeDataBase";
 
 const Product = ({ product, cart, setCart }) => {
   const { name, price, img, ratings, seller } = product;
@@ -19,6 +20,7 @@ const Product = ({ product, cart, setCart }) => {
       newCart = [...rest, exist]
     }
     setCart(newCart)
+    addToDb(product.id)
   }
 
   return (
