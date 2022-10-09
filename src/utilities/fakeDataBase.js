@@ -1,42 +1,28 @@
-const addToDb = (id) =>{
-     let shoppingCart = {};
-     const storedCart = localStorage.getItem('shopping-Cart');
-     if(storedCart){
-          shoppingCart = JSON.parse(storedCart)
-     }
-     
-     //Set quantity
-     const quantity = shoppingCart[id];
-     if(quantity){
-          const newQuantity = quantity + 1;
-          shoppingCart[id] = newQuantity
-     }
-     else{
-          shoppingCart[id] = 1;
-     }
-     localStorage.setItem('shopping-Cart', JSON.stringify(shoppingCart))
-}
+const addToDb = (id) => {
+  let shoppingCart = {};
+  const storedCart = localStorage.getItem("shopping-Cart");
+  if (storedCart) {
+    shoppingCart = JSON.parse(storedCart);
+  }
 
-export {addToDb}
+  //Set quantity
+  const quantity = shoppingCart[id];
+  if (quantity) {
+    shoppingCart[id] = quantity + 1;
+  } else {
+    shoppingCart[id] = 1;
+  }
+  localStorage.setItem("shopping-Cart", JSON.stringify(shoppingCart));
+};
 
 
+const getFromDb = () => {
+  let shoppingCart = {};
+  const storedCart = localStorage.getItem("shopping-Cart");
+  if (storedCart) {
+    shoppingCart = JSON.parse(storedCart);
+  }
+  return shoppingCart;
+};
 
-// const addToDb = id =>{
-//      let shoppingCart = {};
- 
-//      const storedCart = localStorage.getItem('shopping-cart');
-//      if(storedCart){
-//          shoppingCart = JSON.parse(storedCart);
-//      }
- 
-//      // add quantity
-//      const quantity = shoppingCart[id];
-//      if(quantity){
-//          const newQuantity = quantity + 1;
-//          shoppingCart[id] = newQuantity;
-//      }
-//      else{
-//          shoppingCart[id] = 1;
-//      }
-//      localStorage.setItem('shopping-cart', JSON.stringify(shoppingCart));
-//  }
+export { addToDb, getFromDb };
