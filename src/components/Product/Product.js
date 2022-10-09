@@ -3,8 +3,24 @@ import "./Product.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
-const Product = ({ product }) => {
+const Product = ({ product, cart, setCart }) => {
   const { name, price, img, ratings, seller } = product;
+
+  const handleAddToCart = () =>{
+    let newCart = [];
+    const exist = cart.find(existingProduct => existingProduct.id === product.id);
+    if(!exist){
+      product.quantity = 1;
+      newCart = [...cart, product]
+    }
+    else{
+      const rest = cart.filter(existingProduct => existingProduct.id !== product.id)
+      exist.quantity = exist.quantity + 1;
+      newCart = [...rest, exist]
+    }
+    setCart(newCart)
+  }
+
   return (
     <div className="product">
       <img src={img} alt=""></img>
@@ -18,7 +34,7 @@ const Product = ({ product }) => {
           <small>Ratings: {ratings} stars</small>
         </p>
       </div>
-      <button className="btn-cart py-3 text-white">
+      <button onClick={handleAddToCart} className="btn-cart py-3 text-white">
         <p className="btn-text">Add to Cart</p>
         <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>
       </button>
