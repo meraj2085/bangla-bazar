@@ -23,6 +23,7 @@ const Product = ({ product, cart, setCart }) => {
     addToDb(product.id)
   }
 
+
   return (
     <div className="product">
       <img src={img} alt=""></img>

@@ -1,13 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Cart from "../Cart/Cart";
 import Product from "../Product/Product";
+import {getFromDb} from '../../utilities/fakeDataBase'
 import "./Home.css";
 
 const Home = () => {
   const products = useLoaderData();
   const [cart, setCart] = useState([]);
 
+  useEffect(()=>{
+    const storedCart = getFromDb()
+    const savedCart = [];
+    for(const id in storedCart){
+      const quantity = storedCart[id]
+      const addedProduct = products.find(product => product.id === id)
+      if(addedProduct){
+        addedProduct.quantity = quantity;
+        savedCart.push(addedProduct)
+      }
+    }
+    setCart(savedCart)
+  },[products])
 
   return (
     <div className="home-container">
