@@ -20,6 +20,12 @@ const Navbar = () => {
               <Link to="/about">About</Link>
             </li>
             <li>
+              <Link to="/cartDetails" className="relative px-3">
+                <span>Cart</span>
+                <span className="absolute top-0 left-10">0</span>
+              </Link>
+            </li>
+            <li>
               <Link to="/contact">Contact</Link>
             </li>
           </ul>

@@ -1,15 +1,16 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { createContext } from 'react';
+import { Outlet, useLoaderData } from 'react-router-dom';
 import Navbar from '../components/Navbar/Navbar';
-import Footer from '../components/Footer/Footer'
+
+export const ProductContext = createContext([])
 
 const Layout = () => {
+     const products = useLoaderData()
      return (
-          <div>
+          <ProductContext.Provider value={products}>
                <Navbar></Navbar>
                <Outlet></Outlet>
-               <Footer></Footer>
-          </div>
+          </ProductContext.Provider>
      );
 };
 

@@ -4,15 +4,16 @@ import Contact from "../components/Contact/Contact";
 import Home from "../components/Home/Home";
 import Layout from "../Layout/Layout";
 import ErrorPage from '../components/ErrorPage/ErrorPage'
+import CartDetails from '../components/CartDetails/CartDetails'
 
 export const router = createBrowserRouter([
   {
     path: "/",
+    loader: () => fetch("products.json"),
     element: <Layout></Layout>,
     children: [
       {
         path: "/",
-        loader: () => fetch("products.json"),
         element: <Home></Home>,
       },
       {
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
         path: "/contact",
         element: <Contact></Contact>,
       },
+      {
+        path: '/cartDetails',
+        element: <CartDetails></CartDetails>
+      }
     ],
   },
   {
