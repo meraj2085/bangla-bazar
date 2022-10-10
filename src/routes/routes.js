@@ -5,11 +5,12 @@ import Home from "../components/Home/Home";
 import Layout from "../Layout/Layout";
 import ErrorPage from '../components/ErrorPage/ErrorPage'
 import CartDetails from '../components/CartDetails/CartDetails'
+import { productsAndCartData } from "../utilities/getCartAndProductData";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    loader: () => fetch("products.json"),
+    loader: productsAndCartData,
     element: <Layout></Layout>,
     children: [
       {
