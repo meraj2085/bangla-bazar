@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 
-import React from "react";
+import React, { useContext } from "react";
+import { CartContext } from "../../Layout/Layout";
 
 const Navbar = () => {
+  const [cart] = useContext(CartContext);
   return (
     <div>
       <div className="navbar bg-neutral text-neutral-content">
@@ -22,7 +24,7 @@ const Navbar = () => {
             <li>
               <Link to="/cartDetails" className="relative px-3">
                 <span>Cart</span>
-                <span className="absolute top-0 left-10">0</span>
+                <span className="absolute top-0 left-10">{cart.length}</span>
               </Link>
             </li>
             <li>
